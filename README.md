@@ -6,6 +6,19 @@
 
 ---
 
+## Instalación
+
+Para instalar `gdAlertify`, puedes incluir los siguientes enlaces en tu archivo HTML:
+
+```html
+<!-- Enlace al archivo JavaScript -->
+<script src="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.js"></script>
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.css">
+```
+---
+
 ## Funciones
 
 ### 1. Alertas
