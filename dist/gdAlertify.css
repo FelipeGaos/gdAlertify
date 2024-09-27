@@ -1,0 +1,420 @@
+/* Backdrop negro transparente */
+.gd-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.gd-modal-backdrop-exit {
+    opacity: 0; /* Cambia la opacidad a 0 para el efecto de salida */
+}
+
+/* Estilo del modal */
+.gd-modal {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Encabezado del modal */
+.gd-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+}
+
+/* Botón de cierre */
+.gd-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.gd-close-btn:hover {
+    color: #d9534f;
+}
+
+/* Cuerpo del modal */
+.gd-modal-body {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Pie del modal */
+.gd-modal-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Estilos de botones */
+.gd-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Botón por defecto */
+.gd-button-default {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* Botón primario */
+.gd-button-primary {
+    background-color: #007bff;
+    /* Azul */
+    color: white;
+}
+
+.gd-button-primary:hover {
+    background-color: #0056b3;
+    /* Azul más oscuro */
+}
+
+/* Botón de éxito */
+.gd-button-success {
+    background-color: #28a745;
+    /* Verde */
+    color: white;
+}
+
+.gd-button-success:hover {
+    background-color: #218838;
+    /* Verde más oscuro */
+}
+
+/* Botón de información */
+.gd-button-info {
+    background-color: #17a2b8;
+    /* Cian */
+    color: white;
+}
+
+.gd-button-info:hover {
+    background-color: #138496;
+    /* Cian más oscuro */
+}
+
+/* Botón de advertencia */
+.gd-button-warning {
+    background-color: #ffc107;
+    /* Amarillo */
+    color: #212529;
+}
+
+.gd-button-warning:hover {
+    background-color: #e0a800;
+    /* Amarillo más oscuro */
+}
+
+/* Botón de peligro */
+.gd-button-danger {
+    background-color: #d9534f;
+    /* Rojo */
+    color: white;
+}
+
+.gd-button-danger:hover {
+    background-color: #c9302c;
+    /* Rojo más oscuro */
+}
+
+/* Efecto de hover en botón por defecto */
+.gd-button-default:hover {
+    background-color: #ccc;
+}
+
+/* Animación de aparición */
+@keyframes modal-enter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes modal-exit {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+/* Clase para aplicar la animación */
+.gd-modal-enter {
+    animation: modal-enter 0.3s ease-out forwards;
+}
+
+.gd-modal-exit {
+    animation: modal-exit 0.3s ease-out forwards;
+}
+
+/* Estilos de alertas */
+.gd-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.gd-alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.gd-alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.gd-alert-info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.gd-alert-default {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+/* Encabezados de las alertas */
+.gd-alert-header {
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Estilos para el encabezado de cada tipo de alerta */
+.gd-alert-success .gd-alert-header {
+    background-color: #c3e6cb;
+    /* Verde claro */
+    color: #155724;
+    /* Verde oscuro */
+}
+
+.gd-alert-error .gd-alert-header {
+    background-color: #f5c6cb;
+    /* Rojo claro */
+    color: #721c24;
+    /* Rojo oscuro */
+}
+
+.gd-alert-warning .gd-alert-header {
+    background-color: #ffeeba;
+    /* Amarillo claro */
+    color: #856404;
+    /* Amarillo oscuro */
+}
+
+.gd-alert-info .gd-alert-header {
+    background-color: #bee5eb;
+    /* Azul claro */
+    color: #004085;
+    /* Azul oscuro */
+}
+
+.gd-alert-default .gd-alert-header {
+    background-color: #e2e3e5;
+    /* Gris claro */
+    color: #383d41;
+    /* Gris oscuro */
+}
+
+/* Estilos generales del modal */
+.gd-modal {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gd-modal-header,
+.gd-modal-footer {
+    padding: 10px;
+}
+
+.gd-modal-body {
+    padding: 20px;
+}
+
+/* Asegúrate de que esté por encima de otros elementos */
+.gd-notification-container {
+    position: fixed;
+    z-index: 9999;
+}
+
+.gd-notification-container.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.gd-notification-container.top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.gd-notification-container.top-center {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gd-notification-container.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.gd-notification-container.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.gd-notification-container.bottom-center {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gd-notification {
+    background-color: #fff;
+    /* Color de fondo */
+    border: 1px solid #ccc;
+    /* Bordes */
+    padding: 10px;
+    /* Espaciado interno */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    transition: opacity 0.5s ease-out;
+    /* Transición para desvanecerse */
+}
+
+.fade-out {
+    opacity: 0;
+    /* Para desvanecer la notificación */
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out; /* Cambia la duración y la función de tiempo según sea necesario */
+}
+
+.gd-notification-success {
+    background-color: #4CAF50;
+    /* Verde */
+    color: white;
+}
+
+.gd-notification-error {
+    background-color: #F44336;
+    /* Rojo */
+    color: white;
+}
+
+.gd-notification-info {
+    background-color: #2196F3;
+    /* Azul */
+    color: white;
+}
+
+.gd-notification-warning {
+    background-color: #FF9800;
+    /* Naranja */
+    color: white;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Animación de entrada */
+@keyframes slide-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Loader Backdrop */
+.gd-loader-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+/* Loader Styles */
+.gd-loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Asegúrate de que el loader esté por encima de otros elementos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gd-loader span {
+    color: #fff; /* Texto blanco por defecto */
+    font-size: 16px; /* Ajusta el tamaño según sea necesario */
+    margin-top: 10px; /* Espacio entre el spinner y el texto */
+}
+
+/* Spinner styles */
+.gd-loader-spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3); /* Color de fondo del spinner */
+    border-top: 8px solid #ff0000; /* Color del spinner (cambia a tu color preferido) */
+    border-radius: 50%;
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px; /* Ajusta el tamaño según sea necesario */
+    animation: spin 1s linear infinite; /* Animación de rotación */
+}
+
+/* Animación de rotación */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
