@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gdAlertify JS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para los botones */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button.alert {
+            background-color: #007bff;
+        }
+
+        .button.success {
+            background-color: #28a745;
+        }
+
+        .button.error {
+            background-color: #dc3545;
+        }
+
+        .button.info {
+            background-color: #17a2b8;
+        }
+
+        .button.warning {
+            background-color: #ffc107;
+        }
+
+        .button.loader {
+            background-color: #6c757d;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        /* Estilo para el cuadro de código estilo Monokai */
+        .code-container {
+            /* max-width: 800px; */
+            /* width: 100%; */
+            background-color: #2d2a2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin-top: 20px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Courier New', Courier, monospace;
+            padding-top: 40px;
+        }
+
+        .code-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
+            color: #f8f8f2;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+
+        .copy-button i {
+            margin-right: 5px;
+        }
+
+        .code-container .copy-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>gdAlertify JS</h1>
+        <div>
+            <h3>Instalación</h3>
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('instalacionCode')"><i class="fas fa-copy"></i></button>
+                <pre id="instalacionCode">
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.css"&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.js"&gt;&lt;/script&gt;
+                </pre>
+            </div>
+        </div>
+
+        <h3>Ejemplos</h3>
+        <!-- Ejemplo 1: Alerta de éxito -->
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('alertSuccessCode')"><i class="fas fa-copy"></i></button>
+                <pre id="alertSuccessCode">
+gdAlertify.alertSuccess('Operación realizada con éxito');
+                </pre>
+            </div>
+            <button class="button success" onclick="gdAlertify.alertSuccess('Operación realizada con éxito')">Mostrar
+                Alerta de Éxito</button>
+        </div>
+
+        <!-- Ejemplo 2: Alerta de error -->
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('alertErrorCode')"><i class="fas fa-copy"></i></button>
+                <pre id="alertErrorCode">
+gdAlertify.alertError('Ha ocurrido un error inesperado');
+                </pre>
+            </div>
+            <button class="button error" onclick="gdAlertify.alertError('Ha ocurrido un error inesperado')">Mostrar
+                Alerta de Error</button>
+        </div>
+
+        <!-- Ejemplo 3: Confirmación -->
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('confirmCode')"><i class="fas fa-copy"></i></button>
+                <pre id="confirmCode">
+gdAlertify.confirm({
+    title: 'Confirmar acción',
+    message: '¿Está seguro de que desea continuar?',
+    onConfirm: () => { gdAlertify.notify('Acción confirmada', 'success'); },
+});
+                </pre>
+            </div>
+            <button class="button info" onclick="showConfirmation()">Mostrar Confirmación</button>
+        </div>
+
+        <!-- Ejemplo 4: Notificación -->
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('notifyCode')"><i class="fas fa-copy"></i></button>
+                <pre id="notifyCode">
+gdAlertify.notify('Notificación de advertencia', 'warning');
+                </pre>
+            </div>
+            <button class="button warning"
+                onclick="gdAlertify.notify('Notificación de advertencia', 'warning', 2000)">Mostrar
+                Notificación</button>
+        </div>
+
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('loaderCode')"><i class="fas fa-copy"></i></button>
+                <pre id="loaderCode">
+gdAlertify.showLoader({
+    title: 'Cargando, por favor espere...',
+    type: 'spinner',
+    color: '#fff'
+});
+gdAlertify.hideLoader();
+                </pre>
+            </div>
+            <button class="button success"
+                onclick="showLoaderTest()">Mostrar
+                Loader</button>
+        </div>
+
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('atajosCode')"><i class="fas fa-copy"></i></button>
+                <pre id="atajosCode">
+<- Atajos para Alertas ->
+gdAlertify.alertSuccess('¡Éxito! Operación realizada correctamente.');
+gdAlertify.alertError('¡Error! Algo salió mal.');
+gdAlertify.alertInfo('Este es un mensaje informativo.');
+gdAlertify.alertWarning('Advertencia: Acción no recomendada.');
+
+<- Atajos para Notificaciones ->
+gdAlertify.notiSuccess('Operación exitosa, notificación.');
+gdAlertify.notiError('Error al procesar la solicitud, notificación.');
+gdAlertify.notiInfo('Información importante, notificación.');
+gdAlertify.notiWarning('Advertencia en proceso, notificación.');
+
+<- Atajos para Confirmaciones ->
+gdAlertify.confirm({
+    title: 'Confirmar acción',
+    message: '¿Está seguro de que desea continuar?',
+    onConfirm: () => { console.log('Acción confirmada'); }
+});
+
+<- Atajos para Loaders ->
+gdAlertify.showLoader({
+    title: 'Cargando, por favor espere...',
+    type: 'spinner',
+    color: '#ff0000'
+});
+gdAlertify.hideLoader();
+                </pre>
+            </div>
+        </div>
+        <div>
+
+            <div class="code-container">
+                <button class="copy-button" onclick="copyCode('configCode')"><i class="fas fa-copy"></i></button>
+                <pre id="configCode">
+<- Propiedades de Configuración ->
+gdAlertifyConfig({
+    backdropColor: 'rgba(0, 0, 0, 0.5)',  // Color de fondo del modal
+    modalColor: '#fff',                   // Color de fondo del modal
+    modalTextColor: '#000',               // Color del texto en el modal
+    defaultButtonClass: 'btn-primary',    // Clase por defecto para los botones
+    confirmButtonClass: 'btn-success',    // Clase del botón de confirmar
+    cancelButtonClass: 'btn-danger',      // Clase del botón de cancelar
+    defaultConfirmText: 'Confirmar',      // Texto por defecto del botón de confirmar
+    defaultCancelText: 'Cancelar',        // Texto por defecto del botón de cancelar
+    defaultOkText: 'Aceptar',             // Texto por defecto del botón de alerta
+    canCloseOutside: true,                // Permite cerrar el modal haciendo clic fuera de él
+    theme: 'light',                       // Tema por defecto de la alerta/modal
+    defaultNotificationPosition: 'top-right', // Posición por defecto de las notificaciones
+    loaderDefaults: {                     // Configuración del loader
+        title: 'Cargando...',            // Texto para el loader
+        type: 'spinner',                 // Tipo (Actualmente tenemos 1 `spinner`)
+        color: '#000',                   // Color en HEX para el texto
+        spinnerColor: '#ff0000'          // Color en HEX para el spinner
+    }
+});
+                </pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/FelipeGaos/gdAlertify@v1.0.0/dist/gdAlertify.min.js"></script>
+    <script>
+        // Función para copiar el código al portapapeles
+        function copyCode(id) {
+            var code = document.getElementById(id).innerText;
+            var textarea = document.createElement("textarea");
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            gdAlertify.notify('Código copiado al portapapeles', 'success')
+        }
+
+        // Función de confirmación
+        function showConfirmation() {
+            gdAlertify.confirm({
+                title: 'Confirmar acción',
+                message: '¿Está seguro de que desea continuar?',
+                onConfirm: () => { gdAlertify.notify('Acción confirmada', 'success'); },
+            });
+        }
+
+        function showLoaderTest() {
+            gdAlertify.showLoader({
+                title: 'Cargando, por favor espere...',
+                type: 'spinner',
+                color: '#fff'
+            });
+
+            setTimeout(() => {
+                gdAlertify.hideLoader();
+            }, "2000");
+        }
+    </script>
+</body>
+
+</html>
